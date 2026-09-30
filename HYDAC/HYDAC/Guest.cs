@@ -48,12 +48,15 @@ namespace HYDAC
 
         public Guest(string name, string companyName, DateTime date, DateTime arrivalTime)
         {
-
+            this.name = name;
+            this.companyName = companyName;
+            this.date = date;
+            this.arrivalTime = arrivalTime;
         }
 
         public void AssignEmployee(EmployeeRep employee)
         {
-
+            assignedEmployee = employee;
         }
     }
 }
