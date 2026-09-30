@@ -24,7 +24,14 @@ namespace HYDAC
 
         public Guest GetGuest(int id)
         {
-            
+            foreach (Guest guest in guestList)
+            {
+                if (guest.Id == id)
+                {
+                    return guest;
+                }
+            }
+            return null;
         }
     }
 }
