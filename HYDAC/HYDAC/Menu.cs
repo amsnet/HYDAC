@@ -6,6 +6,15 @@ namespace HYDAC
 {
     public class Menu
     {
-        
+        private GuestList guestList;
+
+        public ShowMenu()
+        {
+
+        }
+
+        public SelectOption(int option);
+        public AddNewGuest(string name, string companyName, string date, DateTime date, DateTime time);
+        public AssignEmployeeToGuest(int guestId, string employeeName);
     }
 }
