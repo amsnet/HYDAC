@@ -13,8 +13,17 @@ namespace HYDAC
 
         }
 
-        public SelectOption(int option);
-        public AddNewGuest(string name, string companyName, string date, DateTime date, DateTime time);
-        public AssignEmployeeToGuest(int guestId, string employeeName);
+        public SelectOption(int option)
+        {
+
+        }
+        public AddNewGuest(string name, string companyName, DateTime date, DateTime arrivalTime)
+        {
+
+        }
+        public AssignEmployeeToGuest(int guestId, string employeeName)
+        {
+
+        }
     }
 }

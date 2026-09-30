@@ -6,14 +6,8 @@ namespace HYDAC
 {
     public class GuestList
     {
-        private string[] guest;
-        public string[] Guest
-        {
-            set { guest = value; }
-            get { return guest; }
-        }
-
-        public AddGuest(Guest Guest)
+        private string[] guestList;
+        public AddGuest(Guest guest)
         {
 
         }
