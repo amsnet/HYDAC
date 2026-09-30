@@ -8,20 +8,25 @@ namespace HYDAC
     {
         private GuestList guestList;
 
+        public Menu()
+        {
+            guestList = new GuestList();
+        }
+
         public void ShowMenu()
         {
-            List<Guest> guestList = new GuestList().GetGuests();
+            List<Guest> guests = guestList.GetGuests();
 
             Console.WriteLine("Gæsteliste");
             Console.WriteLine();
 
-            if (guestList.Count() == 0)
+            if (guests.Count() == 0)
             {
                 Console.WriteLine("Ingen gæster på nuværrende tidspunkt.");
                 Console.WriteLine();
             } else
             {
-                foreach(Guest guest in guestList)
+                foreach(Guest guest in guests)
                 {
                     if (guest.AssignedEmployee != null)
                     {
@@ -46,6 +51,7 @@ namespace HYDAC
                 case ConsoleKey.N:
                     if(input.Modifiers.HasFlag(ConsoleModifiers.Alt))
                     {
+                        Console.WriteLine();
                         Console.WriteLine("Add new guest");
                         Console.WriteLine();
                         Console.Write("Navn: ");
@@ -59,6 +65,8 @@ namespace HYDAC
                         Console.WriteLine();
                         Console.Write("Ankomsttid: ");
                         DateTime time = DateTime.Parse(Console.ReadLine());
+
+                        Console.WriteLine($"{name}, {coName}, {date}, {time}");
 
                         AddNewGuest(name, coName, date, time);
                     }
