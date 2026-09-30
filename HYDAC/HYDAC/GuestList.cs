@@ -17,7 +17,7 @@ namespace HYDAC
 
         }
 
-        public ArrayList GetGuests()
+        public List<Guest> GetGuests()
         {
 
         }
