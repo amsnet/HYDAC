@@ -14,17 +14,17 @@ namespace HYDAC
 
         public void AddGuest(Guest guest)
         {
-
+            guestList.Add(guest);
         }
 
         public List<Guest> GetGuests()
         {
-
+            return guestList;
         }
 
         public Guest GetGuest(int id)
         {
-
+            
         }
     }
 }
