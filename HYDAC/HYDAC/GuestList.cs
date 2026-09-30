@@ -1,18 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections;
 
 namespace HYDAC
 {
     public class GuestList
     {
-        private string[] guestList;
-        public AddGuest(Guest guest)
+        private List<Guest> guestList;
+
+        public GuestList()
+        {
+            guestList = new List<Guest>();
+        }
+
+        public void AddGuest(Guest guest)
         {
 
         }
 
-        public string[] GetGuests()
+        public ArrayList GetGuests()
         {
 
         }
