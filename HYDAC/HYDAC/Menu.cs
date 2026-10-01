@@ -107,6 +107,7 @@ namespace HYDAC
 
             Guest guest = new Guest(name, coName, date, time, employee);
             guestList.AddGuest(guest);
+           
         }
         public EmployeeRep AssignEmployeeToGuest()
         {
@@ -126,6 +127,7 @@ namespace HYDAC
 
             return employeeList[input];
         }
+
 
         
     }
