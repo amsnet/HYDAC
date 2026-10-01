@@ -9,6 +9,14 @@ namespace HYDAC
     {
         private bool runProgram = true;
         private GuestList guestList;
+        private EmployeeRep[] employeeList =
+        {
+            new EmployeeRep("Daniel R."),
+            new EmployeeRep("Daniel"),
+            new EmployeeRep("Rene Hansen"),
+            new EmployeeRep("Kasper"),
+            new EmployeeRep("Jesper Salih")
+        };
 
         public Menu()
         {
@@ -22,7 +30,9 @@ namespace HYDAC
             while (runProgram)
             {
                 Console.WriteLine("Gæsteliste");
+                Console.WriteLine("---");
                 Console.WriteLine();
+
 
                 if (guests.Count == 0)
                 {
@@ -33,18 +43,8 @@ namespace HYDAC
                     Console.WriteLine("Gæster");
                     foreach (Guest guest in guests)
                     {
-                        if (guest.AssignedEmployee != null)
-                        {
-                            Console.WriteLine();
-                            Console.WriteLine($"{guest.Id} | {guest.Name} | {guest.CompanyName} | {guest.Date} | {guest.ArrivalTime} | {guest.AssignedEmployee}");
-                        }
-                        else
-                        {
-                            Console.WriteLine();
-                            Console.WriteLine("--- Mangler ansvalig medarbejder");
-                            Console.WriteLine();
-                            Console.WriteLine($"{guest.Id} | {guest.Name} | {guest.CompanyName} | {guest.Date} | {guest.ArrivalTime}");
-                        }
+                        Console.WriteLine();
+                        Console.WriteLine($"{guest.Id} | {guest.Name} | {guest.CompanyName} | {guest.Date} | {guest.ArrivalTime} | {guest.AssignedEmployee.Name}");
                     }
                 }
 
@@ -98,18 +98,33 @@ namespace HYDAC
             Console.WriteLine();
             Console.Write("Ankomsttid: ");
             DateTime time = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Console.Write("Ansvarlig medarbejder: ");
+            Console.WriteLine();
+            EmployeeRep employee = AssignEmployeeToGuest();
 
-            Console.WriteLine($"{name}, {coName}, {date}, {time}");
+            Console.WriteLine($"{name}, {coName}, {date}, {time}, {employee.Name}");
 
-            Guest guest = new Guest(name, coName, date, time);
+            Guest guest = new Guest(name, coName, date, time, employee);
             guestList.AddGuest(guest);
         }
-        public void AssignEmployeeToGuest(int guestId, string employeeName)
+        public EmployeeRep AssignEmployeeToGuest()
         {
-            Guest guest = guestList.GetGuest(guestId);
-            EmployeeRep employee = new EmployeeRep();
-            employee.Name = employeeName;
-            guest.AssignEmployee(employee);
+            int count = employeeList.Count();
+
+            for(int i = 0; i < count; i++)
+            {
+                Console.WriteLine($"{i + 1}: {employeeList[i].Name}");
+            }
+
+            int input = -1;
+
+            while (input > count || input < 0)
+            {
+                input = int.Parse(Console.ReadLine()) - 1;
+            }
+
+            return employeeList[input];
         }
     }
 }

@@ -12,5 +12,10 @@ namespace HYDAC
             set { name = value; }
             get { return name; }
         }
+
+        public EmployeeRep(string name)
+        {
+            Name = name;
+        }
     }
 }
