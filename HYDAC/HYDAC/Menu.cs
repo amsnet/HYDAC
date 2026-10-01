@@ -27,7 +27,7 @@ namespace HYDAC
         {
             List<Guest> guests = guestList.GetGuests();
 
-            while (runProgram)
+            while (runProgram == true)
             {
                 Console.WriteLine("Gæsteliste");
                 Console.WriteLine("---");
@@ -94,10 +94,10 @@ namespace HYDAC
             string coName = Console.ReadLine();
             Console.WriteLine();
             Console.Write("Dato for besøg: ");
-            DateTime date = DateTime.Parse(Console.ReadLine());
+            DateOnly date = DateOnly.Parse(Console.ReadLine());
             Console.WriteLine();
             Console.Write("Ankomsttid: ");
-            DateTime time = DateTime.Parse(Console.ReadLine());
+            TimeOnly time = TimeOnly.Parse(Console.ReadLine());
             Console.WriteLine();
             Console.Write("Ansvarlig medarbejder: ");
             Console.WriteLine();
@@ -126,5 +126,7 @@ namespace HYDAC
 
             return employeeList[input];
         }
+
+        
     }
 }
