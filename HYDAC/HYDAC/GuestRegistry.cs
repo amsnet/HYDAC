@@ -6,10 +6,6 @@ namespace HYDAC
     public class GuestRegistry
     {
         private Guest[] list;
-        public Guest[] List
-        {
-            get { return list; }
-        }
         private int listSize;
 
         public GuestRegistry()

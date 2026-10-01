@@ -82,10 +82,10 @@ namespace HYDAC
                         return false;
                     case ConsoleKey.O:
                         runProgram = false;
-                        dataHandler.SaveGuestList(guestList.List);
+                        dataHandler.SaveGuestList(guestList.GetGuests());
                         return false;
                     case ConsoleKey.S:
-                        dataHandler.SaveGuestList(guestList.List);
+                        dataHandler.SaveGuestList(guestList.GetGuests());
                         return false;
                 }
             }
