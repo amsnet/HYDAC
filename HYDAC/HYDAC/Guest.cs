@@ -25,15 +25,15 @@ namespace HYDAC
             get { return companyName; }
         }
 
-        private DateTime date;
-        public DateTime Date
+        private DateOnly date;
+        public DateOnly Date
         {
             set { date = value; }
             get { return date; }
         }
 
-        private DateTime arrivalTime;
-        public DateTime ArrivalTime
+        private TimeOnly arrivalTime;
+        public TimeOnly ArrivalTime
         {
             set { arrivalTime = value; }
             get { return arrivalTime; }
@@ -46,7 +46,7 @@ namespace HYDAC
             get { return assignedEmployee; }
         }
 
-        public Guest(string name, string companyName, DateTime date, DateTime arrivalTime, EmployeeRep employee)
+        public Guest(string name, string companyName, DateOnly date, TimeOnly arrivalTime, EmployeeRep employee)
         {
             Name = name;
             CompanyName = companyName;
