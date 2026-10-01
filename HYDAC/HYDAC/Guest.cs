@@ -46,12 +46,15 @@ namespace HYDAC
             get { return assignedEmployee; }
         }
 
-        public Guest(string name, string companyName, DateTime date, DateTime arrivalTime)
+        public Guest(string name, string companyName, DateTime date, DateTime arrivalTime, EmployeeRep employee)
         {
-            this.name = name;
-            this.companyName = companyName;
-            this.date = date;
-            this.arrivalTime = arrivalTime;
+            Name = name;
+            CompanyName = companyName;
+            Date = date;
+            ArrivalTime = arrivalTime;
+            AssignedEmployee = employee;
+
+            
         }
 
         public void AssignEmployee(EmployeeRep employee)
