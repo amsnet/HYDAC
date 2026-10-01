@@ -8,7 +8,7 @@ namespace HYDAC
     public class Menu
     {
         private bool runProgram = true;
-        private GuestList guestList;
+        private GuestRegistry guestList;
         private EmployeeRep[] employeeList =
         {
             new EmployeeRep("Daniel R."),
@@ -22,7 +22,7 @@ namespace HYDAC
 
         public Menu()
         {
-            guestList = new GuestList();
+            guestList = new GuestRegistry();
             dataHandler = new DataHandler("GuestList.txt");
         }
 
@@ -82,6 +82,7 @@ namespace HYDAC
                         return false;
                     case ConsoleKey.O:
                         runProgram = false;
+                        dataHandler.SaveGuestList(guestList.List);
                         return false;
                     case ConsoleKey.S:
                         dataHandler.SaveGuestList(guestList.List);

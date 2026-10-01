@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace HYDAC
 {
-    public class GuestList
+    public class GuestRegistry
     {
         private Guest[] list;
         public Guest[] List
@@ -12,7 +12,7 @@ namespace HYDAC
         }
         private int listSize;
 
-        public GuestList()
+        public GuestRegistry()
         {
             listSize = 0;
             list = new Guest[listSize];
