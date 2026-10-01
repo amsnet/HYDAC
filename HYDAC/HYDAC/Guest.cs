@@ -52,14 +52,17 @@ namespace HYDAC
             CompanyName = companyName;
             Date = date;
             ArrivalTime = arrivalTime;
-            AssignedEmployee = employee;
-
-            
+            AssignedEmployee = employee;   
         }
 
         public void AssignEmployee(EmployeeRep employee)
         {
             assignedEmployee = employee;
+        }
+
+        public string MakeTitle()
+        {
+            return $"{name};{companyName};{date};{arrivalTime};{assignedEmployee.Name}";
         }
     }
 }

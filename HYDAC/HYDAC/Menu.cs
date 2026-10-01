@@ -18,33 +18,37 @@ namespace HYDAC
             new EmployeeRep("Jesper Salih")
         };
 
+        DataHandler dataHandler;
+
         public Menu()
         {
             guestList = new GuestList();
+            dataHandler = new DataHandler("GuestList.txt");
         }
 
         public void ShowMenu()
         {
-            List<Guest> guests = guestList.GetGuests();
-
+            Guest[] guests = guestList.GetGuests();
             while (runProgram == true)
             {
+                guests = guestList.GetGuests();
+
                 Console.WriteLine("Gæsteliste");
                 Console.WriteLine();
                 Console.WriteLine("---");
                 Console.WriteLine();
 
 
-                if (guests.Count == 0)
+                if (guests.Length == 0)
                 {
                     Console.WriteLine("Ingen gæster på nuværrende tidspunkt.");
                 }
                 else
                 {
                     Console.WriteLine("Gæster");
+                    Console.WriteLine();
                     foreach (Guest guest in guests)
                     {
-                        Console.WriteLine();
                         Console.WriteLine($"{guest.Id} | {guest.Name} | {guest.CompanyName} | {guest.Date} | {guest.ArrivalTime} | {guest.AssignedEmployee.Name}");
                     }
                 }
@@ -55,7 +59,7 @@ namespace HYDAC
 
                 Console.WriteLine();
 
-                Console.WriteLine("ALT + N: Ny gæst | ALT + O: Luk program");
+                Console.WriteLine("ALT + N: Ny gæst | ALT + S: Gem gæsteliste | ALT + O: Luk program");
 
                 for (bool requestSelection = true; requestSelection;)
                 {
@@ -78,6 +82,9 @@ namespace HYDAC
                         return false;
                     case ConsoleKey.O:
                         runProgram = false;
+                        return false;
+                    case ConsoleKey.S:
+                        dataHandler.SaveGuestList(guestList.List);
                         return false;
                 }
             }

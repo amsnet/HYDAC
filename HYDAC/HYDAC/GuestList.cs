@@ -5,26 +5,44 @@ namespace HYDAC
 {
     public class GuestList
     {
-        private List<Guest> guestList;
+        private Guest[] list;
+        public Guest[] List
+        {
+            get { return list; }
+        }
+        private int listSize;
 
         public GuestList()
         {
-            guestList = new List<Guest>();
+            listSize = 0;
+            list = new Guest[listSize];
         }
 
         public void AddGuest(Guest guest)
         {
-            guestList.Add(guest);
+
+            listSize++;
+
+            Guest[] tempArray = new Guest[listSize];
+
+            for (int i = 0; i < listSize - 1; i++)
+            {
+                tempArray[i] = list[i];
+            }
+
+            tempArray[listSize - 1] = guest;
+
+            list = tempArray;
         }
 
-        public List<Guest> GetGuests()
+        public Guest[] GetGuests()
         {
-            return guestList;
+            return list;
         }
 
         public Guest GetGuest(int id)
         {
-            foreach (Guest guest in guestList)
+            foreach (Guest guest in list)
             {
                 if (guest.Id == id)
                 {

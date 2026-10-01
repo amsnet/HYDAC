@@ -17,17 +17,15 @@ namespace HYDAC
             this.dataFileName = dataFileName;
         }
 
-        public void SaveGuestList(GuestList guestList)
+        public void SaveGuestList(Guest[] guestList)
         {
-            using StreamWriter sw = new StreamWriter(dataFileName);
-            sw.WriteLine(guestList.AddGuest);
-
-
-
-
-
-
-
+            using (StreamWriter sw = new StreamWriter(dataFileName))
+            {
+                foreach (Guest person in guestList)
+                {
+                    sw.Write(person.MakeTitle() + "*");
+                }
+            }
         }
     }
 }
