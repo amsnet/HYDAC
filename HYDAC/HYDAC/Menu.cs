@@ -30,6 +30,7 @@ namespace HYDAC
             while (runProgram)
             {
                 Console.WriteLine("Gæsteliste");
+                Console.WriteLine();
                 Console.WriteLine("---");
                 Console.WriteLine();
 
