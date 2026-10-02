@@ -46,7 +46,6 @@ namespace HYDAC
                 }
                 else
                 {
-                    Console.WriteLine("Gæster");
                     Console.WriteLine();
                     foreach (Guest guest in guests)
                     {
@@ -103,12 +102,36 @@ namespace HYDAC
             Console.WriteLine();
             Console.Write("Firmanavn: ");
             string coName = Console.ReadLine();
+
             Console.WriteLine();
-            Console.Write("Dato for besøg: ");
-            DateOnly date = DateOnly.Parse(Console.ReadLine());
+            DateOnly date = new DateOnly(2025, 1, 1);
+            for (bool validInput = false; !validInput;)
+            {
+                Console.Write("Dato for besøg: ");
+                if (DateOnly.TryParse(Console.ReadLine(), out date))
+                {
+                    validInput = true;
+                } else
+                {
+                    Console.WriteLine("Ugyldig dato");
+                }
+            }
+
             Console.WriteLine();
-            Console.Write("Ankomsttid: ");
-            TimeOnly time = TimeOnly.Parse(Console.ReadLine());
+            TimeOnly time = new TimeOnly(00,00,00);
+            for (bool validInput = false; !validInput;)
+            {
+                Console.Write("Ankomsttid: ");
+                if (TimeOnly.TryParse(Console.ReadLine(), out time))
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Ugyldig tidspunkt");
+                }
+            }
+
             Console.WriteLine();
             Console.Write("Ansvarlig medarbejder: ");
             Console.WriteLine();
@@ -129,11 +152,19 @@ namespace HYDAC
                 Console.WriteLine($"{i + 1}: {employeeList[i].Name}");
             }
 
-            int input = -1;
+            int input = 0;
 
-            while (input > count || input < 0)
+            for(bool validIinput = false; !validIinput;)
             {
-                input = int.Parse(Console.ReadLine()) - 1;
+                if (int.TryParse(Console.ReadLine(), out input) && input <= count && input > 0)
+                {
+                    input -= 1;
+                    validIinput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Ugyldigt valg.");
+                }
             }
 
             return employeeList[input];
