@@ -87,6 +87,7 @@ namespace HYDAC
                     case ConsoleKey.S:
                         dataHandler.SaveGuestList(guestList.GetGuests());
                         return false;
+                  
                 }
             }
             return true;
