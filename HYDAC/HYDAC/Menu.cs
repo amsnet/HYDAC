@@ -120,7 +120,7 @@ namespace HYDAC
         }
         public EmployeeRep AssignEmployeeToGuest()
         {
-            int count = employeeList.Count();
+            int count = employeeList.Length;
 
             for(int i = 0; i < count; i++)
             {
