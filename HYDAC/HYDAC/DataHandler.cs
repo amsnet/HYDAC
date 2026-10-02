@@ -18,6 +18,17 @@ namespace HYDAC
             this.dataFileName = dataFileName;
         }
 
+        public Guest[] InitGuests()
+        {
+            if (File.Exists(dataFileName))
+            {
+                return LoadGuests();
+            } else
+            {
+                return null;
+            }
+        }
+
         public void SaveGuestList(Guest[] guestList)
         {
             using (StreamWriter sw = new StreamWriter(dataFileName))
@@ -30,21 +41,23 @@ namespace HYDAC
         }
 
         
-        public Guest[] LoadGuest()
+        public Guest[] LoadGuests()
         {
             string input;
-            string[] rawGeustArray;
+            string[] rawGuestArray;
             using (StreamReader sr = new StreamReader(dataFileName))
             {
                 input = sr.ReadLine();
-                rawGeustArray = input.Split("*");
+                rawGuestArray = input.Split("*", StringSplitOptions.RemoveEmptyEntries);
             }
-            int guestCount = rawGeustArray.Count();
+
+            int guestCount = rawGuestArray.Count();
+
             Guest[] guests = new Guest[guestCount];
 
             for (int i = 0; i < guestCount; i++)
             {
-                string[] splitGuests = rawGeustArray[i].Split(";");
+                string[] splitGuests = rawGuestArray[i].Split(";");
                 if (splitGuests.Length==5)
                 {
                     string name = splitGuests[0];
@@ -56,10 +69,6 @@ namespace HYDAC
                 }
             }
             return guests; 
-
-
-
         }
-
     }
 }

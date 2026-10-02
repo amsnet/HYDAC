@@ -6,6 +6,14 @@ namespace HYDAC
     public class GuestRegistry
     {
         private Guest[] list;
+        public Guest[] List
+        {
+            set
+            {
+                list = value;
+                listSize = list.Length;
+            }
+        }
         private int listSize;
 
         public GuestRegistry()

@@ -24,6 +24,7 @@ namespace HYDAC
         {
             guestList = new GuestRegistry();
             dataHandler = new DataHandler("GuestList.txt");
+            guestList.List = dataHandler.InitGuests();
         }
 
         public void ShowMenu()
