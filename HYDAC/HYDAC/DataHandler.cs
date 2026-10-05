@@ -20,7 +20,7 @@ namespace HYDAC
 
         public Guest[] InitGuests()
         {
-            if (File.Exists(dataFileName))
+            if (File.Exists(dataFileName) && File.ReadAllText(dataFileName) != "")
             {
                 return LoadGuests();
             } else
