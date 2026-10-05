@@ -11,7 +11,13 @@ namespace HYDAC
             set
             {
                 list = value;
-                listSize = list.Length;
+                if (list != null)
+                {
+                    listSize = list.Length;
+                }
+              
+                
+                
             }
         }
         private int listSize;

@@ -22,8 +22,8 @@ namespace HYDAC
 
         public Menu()
         {
-            guestList = new GuestRegistry();
             dataHandler = new DataHandler("GuestList.txt");
+            guestList = new GuestRegistry();           
             guestList.List = dataHandler.InitGuests();
         }
 
@@ -38,18 +38,20 @@ namespace HYDAC
                 Console.WriteLine();
                 Console.WriteLine("---");
                 Console.WriteLine();
+                
 
 
-                if (guests.Length == 0)
+                if (guests == null || guests.Length == 0)
                 {
                     Console.WriteLine("Ingen gæster på nuværrende tidspunkt.");
                 }
                 else
                 {
                     Console.WriteLine();
+                    Console.WriteLine("  Gæst  |  Firma  |  Dato   |   Ankomstid  |  Ansvarlig");
                     foreach (Guest guest in guests)
                     {
-                        Console.WriteLine($"{guest.Id} | {guest.Name} | {guest.CompanyName} | {guest.Date} | {guest.ArrivalTime} | {guest.AssignedEmployee.Name}");
+                        Console.WriteLine($"{guest.Name} | {guest.CompanyName} | {guest.Date} | {guest.ArrivalTime} | {guest.AssignedEmployee.Name}");
                     }
                 }
 
