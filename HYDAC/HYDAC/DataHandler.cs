@@ -31,11 +31,14 @@ namespace HYDAC
 
         public void SaveGuestList(Guest[] guestList)
         {
-            using (StreamWriter sw = new StreamWriter(dataFileName))
+            if (guestList != null)
             {
-                foreach (Guest person in guestList)
+                using (StreamWriter sw = new StreamWriter(dataFileName))
                 {
-                    sw.Write(person.MakeTitle() + "*");
+                    foreach (Guest person in guestList)
+                    {
+                        sw.Write(person.MakeTitle() + "*");
+                    }
                 }
             }
         }

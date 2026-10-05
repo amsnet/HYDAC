@@ -47,8 +47,7 @@ namespace HYDAC
                 }
                 else
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("  Gæst  |  Firma  |  Dato   |   Ankomstid  |  Ansvarlig");
+                    Console.WriteLine("Gæst  |  Firma  |  Dato   |   Ankomstid  |  Ansvarlig");
                     foreach (Guest guest in guests)
                     {
                         Console.WriteLine($"{guest.Name} | {guest.CompanyName} | {guest.Date} | {guest.ArrivalTime} | {guest.AssignedEmployee.Name}");
@@ -68,7 +67,7 @@ namespace HYDAC
                     requestSelection = SelectOption(Console.ReadKey(true));
                 }
 
-                Console.Clear();
+                
             }
         }
 
@@ -81,13 +80,16 @@ namespace HYDAC
                     case ConsoleKey.N:
                         Console.Clear();
                         AddNewGuest();
+                        Console.Clear();
                         return false;
                     case ConsoleKey.O:
                         runProgram = false;
-                        dataHandler.SaveGuestList(guestList.GetGuests());
+                        Console.Clear();
                         return false;
                     case ConsoleKey.S:
                         dataHandler.SaveGuestList(guestList.GetGuests());
+                        Console.Clear();
+                        Console.Write("Gæsteliste er gemt! - ");
                         return false;
                   
                 }
