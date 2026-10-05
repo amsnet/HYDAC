@@ -4,12 +4,6 @@ namespace HYDAC
 {
     public class Guest
     {
-        private int id;
-        public int Id
-        {
-            set { id = value; }
-            get { return id; }
-        }
 
         private string name;
         public string Name
@@ -55,10 +49,6 @@ namespace HYDAC
             AssignedEmployee = employee;   
         }
 
-        public void AssignEmployee(EmployeeRep employee)
-        {
-            assignedEmployee = employee;
-        }
 
         public string MakeTitle()
         {

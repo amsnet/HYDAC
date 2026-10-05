@@ -50,16 +50,7 @@ namespace HYDAC
             return list;
         }
 
-        public Guest GetGuest(int id)
-        {
-            foreach (Guest guest in list)
-            {
-                if (guest.Id == id)
-                {
-                    return guest;
-                }
-            }
-            return null;
-        }
+    
+       
     }
 }
