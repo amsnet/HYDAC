@@ -1,0 +1,53 @@
+@startuml
+hide footbox
+
+skinparam backgroundColor white
+skinparam ActorStyle stickman
+skinparam ActorBackgroundColor white
+skinparam ActorBorderColor black
+skinparam ActorFontColor black
+
+skinparam ParticipantBackgroundColor white
+skinparam ParticipantBorderColor black
+skinparam ParticipantFontColor black
+
+skinparam SequenceLifeLineBackgroundColor white
+skinparam SequenceLifeLineBorderColor black
+
+skinparam ArrowColor black
+skinparam ArrowFontColor black
+
+actor ": Receptionist" as R
+participant ": Menu" as menu
+participant ": GuestRegistry" as registry
+participant ": DataHandler" as dataHandler
+participant ": Guest" as guest
+participant "GuestList.txt" as file
+
+R -> menu : SelectOption(Alt + S)
+activate menu
+
+menu -> registry : GetGuests()
+activate registry
+registry --> menu : guests
+deactivate registry
+
+menu -> dataHandler : SaveGuestList(guests)
+activate dataHandler
+
+loop for hver guest
+    dataHandler -> guest : MakeTitle()
+    activate guest
+    guest --> dataHandler : guestData
+    deactivate guest
+
+    dataHandler -> file : Write(guestData + "*")
+end
+
+dataHandler --> menu
+deactivate dataHandler
+
+menu --> R : success
+deactivate menu
+
+@enduml

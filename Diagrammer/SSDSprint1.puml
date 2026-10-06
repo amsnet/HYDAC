@@ -1,0 +1,39 @@
+@startuml
+hide footbox
+
+skinparam backgroundColor white
+
+skinparam ActorStyle stickman
+skinparam ActorBackgroundColor white
+skinparam ActorBorderColor black
+skinparam ActorFontColor black
+
+skinparam ParticipantBackgroundColor white
+skinparam ParticipantBorderColor black
+skinparam ParticipantFontColor black
+
+skinparam SequenceLifeLineBackgroundColor white
+skinparam SequenceLifeLineBorderColor black
+
+skinparam ArrowColor black
+skinparam ArrowFontColor black
+
+skinparam GroupBorderColor black
+skinparam GroupBackgroundColor white
+skinparam GroupHeaderFontColor black
+skinparam GroupBodyBackgroundColor white
+
+actor "Receptionist" as R
+participant ": System" as S
+
+R -> S : seGæster
+activate S
+S --> R : gæsteListe
+deactivate S
+
+R -> S : tilføjNyGæst(navn, firmanavn, dato, ankomsttid, medarbejder)
+activate S
+S --> R : gæsteListe
+deactivate S
+
+@enduml

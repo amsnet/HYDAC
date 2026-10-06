@@ -1,0 +1,69 @@
+@startuml
+
+hide stereotypes
+hide circle
+hide empty members
+
+skinparam classAttributeIconSize 0
+
+class "Menu" as menu {
+    - runProgram : bool
+    - guestList : GuestRegistry
+    - employeeList : EmployeeRep[]
+    - dataHandler : DataHandler
+    + <<constructor>> Menu()
+    + ShowMenu() : void
+    + SelectOption(input : ConsoleKeyInfo) : bool
+    + AddNewGuest() : void
+    + AssignEmployeeToGuest() : EmployeeRep
+}
+
+class "Guest" as guest {
+    + Name : string
+    + CompanyName : string
+    + Date : DateOnly
+    + ArrivalTime : TimeOnly
+    + AssignedEmployee : EmployeeRep
+    + <<constructor>> Guest(name : string, companyName : string, date : DateOnly, arrivalTime : TimeOnly, employee : EmployeeRep)
+    + MakeTitle() : string
+}
+
+class "EmployeeRep" as ER {
+    + Name : string
+    + <<constructor>> EmployeeRep(name : string)
+}
+
+class "GuestRegistry" as registry {
+    + List : Guest[]
+    - listSize : int
+    + <<constructor>> GuestRegistry()
+    + AddGuest(guest : Guest) : void
+    + GetGuests() : Guest[]
+}
+
+class "DataHandler" as dataHandler {
+    + DataFileName : string
+    + <<constructor>> DataHandler(dataFileName : string)
+    + InitGuests() : Guest[]
+    + SaveGuestList(guestList : Guest[]) : void
+    + LoadGuests() : Guest[]
+}
+
+' Placering
+menu -[hidden]right-> registry
+registry -[hidden]down-> guest
+ER -[hidden]right-> guest
+dataHandler -[hidden]left-> menu
+
+' Faktiske relationer
+menu --> "1" registry
+menu --> "1" dataHandler
+menu --> "0..*" ER
+
+registry --> "0..*" guest
+guest --> "1" ER
+
+dataHandler ..> guest
+dataHandler ..> ER
+
+@enduml

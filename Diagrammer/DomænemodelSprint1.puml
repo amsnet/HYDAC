@@ -1,0 +1,25 @@
+@startuml
+
+hide stereotypes
+hide circle
+hide empty members
+
+class "Gæst" as gæst {
+    navn
+    firmanavn
+    dato
+    ankomsttid
+}
+
+class "AnsvarligMedarbejder" as am {
+    navn    
+}
+
+class "Gæsteliste" as list {
+}
+
+list "1" -- "0..*" gæst : indeholder
+am "1" -- "0..*" gæst : indeholder
+
+
+@enduml

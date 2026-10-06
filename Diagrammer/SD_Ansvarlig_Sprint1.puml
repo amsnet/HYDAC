@@ -1,0 +1,55 @@
+@startuml
+hide footbox
+
+skinparam backgroundColor white
+skinparam ActorStyle stickman
+skinparam ActorBackgroundColor white
+skinparam ActorBorderColor black
+skinparam ActorFontColor black
+
+skinparam ParticipantBackgroundColor white
+skinparam ParticipantBorderColor black
+skinparam ParticipantFontColor black
+
+skinparam SequenceLifeLineBackgroundColor white
+skinparam SequenceLifeLineBorderColor black
+
+skinparam ArrowColor black
+skinparam ArrowFontColor black
+
+actor ": Receptionist" as R
+participant ": Menu" as menu
+participant ": GuestList" as list
+
+R -> menu : ShowMenu()
+activate menu
+
+menu -> list : GetGuests()
+activate list
+list --> menu : guests
+deactivate list
+
+menu --> R : GuestList
+deactivate menu
+
+R -> menu : AssignEmployeeToGuest(guestId, employeeName)
+activate menu
+
+menu -> list : GetGuest(guestId)
+activate list
+list --> menu : guest
+deactivate list
+
+create participant ": EmployeeRep" as ER
+menu -> ER : EmployeeRep(employeeName)
+activate ER
+ER --> menu : employee
+deactivate ER
+
+menu -> guest : AssignEmployee(employee)
+activate guest
+deactivate guest
+
+deactivate menu
+
+@enduml

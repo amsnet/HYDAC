@@ -1,0 +1,56 @@
+@startuml
+hide footbox
+
+skinparam backgroundColor white
+skinparam ActorStyle stickman
+skinparam ActorBackgroundColor white
+skinparam ActorBorderColor black
+skinparam ActorFontColor black
+
+skinparam ParticipantBackgroundColor white
+skinparam ParticipantBorderColor black
+skinparam ParticipantFontColor black
+
+skinparam SequenceLifeLineBackgroundColor white
+skinparam SequenceLifeLineBorderColor black
+
+skinparam ArrowColor black
+skinparam ArrowFontColor black
+
+actor ": Receptionist" as R
+participant ": Menu" as menu
+participant ": GuestRegistry" as registry
+
+R -> menu : ShowMenu()
+activate menu
+
+menu -> registry : GetGuests()
+activate registry
+registry --> menu : guests
+deactivate registry
+
+menu --> R : GuestList
+
+R -> menu : SelectOption(Alt + N)
+
+menu -> menu : AddNewGuest()
+
+menu --> R : Indtast navn,\nfirmanavn, dato,\nankomsttid
+R --> menu : name, companyName,\ndate, arrivalTime
+
+menu -> menu : AssignEmployeeToGuest()
+menu --> R : Vis employeeList
+R --> menu : employee choice
+
+create participant ": Guest" as guest
+menu -> guest : Guest(name, companyName,\ndate, arrivalTime, employee)
+activate guest
+guest --> menu : guest
+deactivate guest
+
+menu -> registry : AddGuest(guest)
+activate registry
+deactivate registry
+
+deactivate menu
+@enduml
