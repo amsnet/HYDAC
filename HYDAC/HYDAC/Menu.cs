@@ -38,8 +38,6 @@ namespace HYDAC
                 Console.WriteLine();
                 Console.WriteLine("---");
                 Console.WriteLine();
-                
-
 
                 if (guests == null || guests.Length == 0)
                 {
